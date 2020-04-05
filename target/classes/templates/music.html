@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+<div id="app">
+    <v-app>
+        <v-content>
+            <template>
+                <v-card class="overflow-hidden">
+                    <v-app-bar
+                            absolute
+                            color="#fcb69f"
+                            dark
+                            shrink-on-scroll
+                            src="https://picsum.photos/1920/1080?random"
+                            scroll-target="#scrolling-techniques-2"
+                    >
+                        <template v-slot:img="{ props }">
+                            <v-img
+                                    v-bind="props"
+                                    gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+                            ></v-img>
+                        </template>
+                        <v-toolbar-title>歌曲列表</v-toolbar-title>
+                        <v-toolbar-title style="margin-left: 30px;">52首歌</v-toolbar-title>
+                    </v-app-bar>
+                    <v-container style="height: 130px;"></v-container>
+                    </v-sheet>
+
+
+
+                    <div style="display: flex;">
+                        <!-- 音乐 -->
+                        <template>
+                            <v-card
+                                    width="80%"
+                            >
+
+                                <v-col cols="12">
+                                    <v-card
+                                            color="#385F73"
+                                            dark
+                                    >
+                                </v-col>
+
+                                <v-col
+                                        v-for="(item, i) in items"
+                                        :key="i"
+                                        cols="12"
+                                >
+                                    <v-card
+                                            :color="item.color"
+                                            dark
+                                    >
+                                        <div class="d-flex flex-no-wrap justify-space-between">
+                                            <div>
+                                                <v-card-title
+                                                        class="headline"
+                                                        v-text="item.title"
+                                                ></v-card-title>
+
+                                                <v-card-subtitle v-text="item.artist">
+
+                                                </v-card-subtitle>
+                                            </div>
+
+                                            <v-avatar
+                                                    class="ma-3"
+                                                    size="125"
+                                                    tile
+                                            >
+
+                                                <v-img :src="item.src">
+
+                                                </v-img>
+
+                                            </v-avatar>
+
+                                        </div>
+                                        <template>
+                                            <div>
+                                                <v-progress-linear
+                                                        color="red lighten-2"
+                                                        buffer-value="30"
+                                                        stream
+                                                ></v-progress-linear>
+
+                                                <br>
+                                                <v-progress-linear
+                                                        buffer-value="70"
+                                                        stream
+                                                        color="cyan"
+                                                ></v-progress-linear>
+                                                <br>
+
+                                            </div>
+                                        </template>
+                                    </v-card>
+                                    <!-- 每个都有 -->
+                                </v-col>
+
+                                </v-row>
+
+                                </v-container>
+
+
+                            </v-card>
+                            <!-- 音乐榜单 -->
+                            <template>
+                                <div style="width: 30%;">
+                                    <v-card
+                                            max-width="100%"
+                                            class="mx-auto"
+                                    >
+                                        <v-list-item>
+                                            <v-list-item-content>
+                                                <v-list-item-title class="headline">音乐飙升榜</v-list-item-title>
+                                                <v-list-item-subtitle>每天更新</v-list-item-subtitle>
+                                            </v-list-item-content>
+                                        </v-list-item>
+
+                                        <v-img
+                                                src="http://img95.699pic.com/photo/50089/3293.jpg_wh300.jpg"
+                                                height="150"
+                                        ></v-img>
+
+
+                                        <div style="margin-top: 30px;">
+                                            <v-card
+                                                    max-width="100%"
+                                                    class="mx-auto"
+                                            >
+                                                <v-list-item>
+                                                    <v-list-item-content>
+                                                        <v-list-item-title class="headline">音乐说唱榜</v-list-item-title>
+                                                        <v-list-item-subtitle>每周五更新</v-list-item-subtitle>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+
+                                                <v-img
+                                                        src="https://images.unsplash.com/photo-1513829596324-4bb2800c5efb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
+                                                        height="150"
+                                                ></v-img>
+
+                                        </div>
+
+
+                                        <div style="margin-top: 30px;">
+                                            <v-card
+                                                    max-width="100%"
+                                                    class="mx-auto"
+                                            >
+                                                <v-list-item>
+                                                    <v-list-item-content>
+                                                        <v-list-item-title class="headline">音乐电音榜</v-list-item-title>
+                                                        <v-list-item-subtitle>每周五更新</v-list-item-subtitle>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+
+                                                <v-img
+                                                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"
+                                                        height="150"
+                                                ></v-img>
+
+                                        </div>
+
+
+                                        <div style="margin-top: 30px;">
+                                            <v-card
+                                                    max-width="100%"
+                                                    class="mx-auto"
+                                            >
+                                                <v-list-item>
+                                                    <v-list-item-content>
+                                                        <v-list-item-title class="headline">新生榜</v-list-item-title>
+                                                        <v-list-item-subtitle>每周一更新</v-list-item-subtitle>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+
+                                                <v-img
+                                                        src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+                                                        height="150"
+                                                ></v-img>
+
+                                        </div>
+
+                                </div>
+
+
+                            </template>
+
+
+
+
+                        </template>
+
+
+
+
+
+
+            </template>
+
+
+</div>
+</v-content>
+
+</v-content>
+</v-app>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        vuetify: new Vuetify(),
+        data: () => ({
+            items: [
+                {
+                    color: '#1F7087',
+                    src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
+                    title: '好想爱这个世界（LIVE）',
+                    artist: '华晨宇',
+                },
+                {
+                    color: '#952175',
+                    src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+                    title: '听见',
+                    artist: '不才',
+                },
+            ],
+        }),
+    })
+</script>
+</body>
+</html>
