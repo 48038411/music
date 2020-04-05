@@ -164,13 +164,13 @@
             <version>2.10.0</version>
         </dependency>
 
-        <!--        BCrypt-->
+        <!-- 加盐BCrypt-->
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
-
+        <!--解盐-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
@@ -245,6 +245,4 @@
 <!--        </pluginManagement>-->
 
 <!--    </build>-->
-
-
 </project>

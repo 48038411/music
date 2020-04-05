@@ -100,6 +100,12 @@ private static int newcode;
         return querySendDetailsResponse;
     }
 
+    public String getCode(){
+        setNewcode();
+        String code = Integer.toString(getNewcode());
+        return code;
+    }
+
     public static void main(String[] args) throws ClientException, InterruptedException {
 //        获取验证码
         setNewcode();
