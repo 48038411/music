@@ -1,6 +1,7 @@
 package music.service.impl;
 
 
+import music.entity.Music;
 import music.entity.User;
 import music.mapper.UserMapper;
 import music.service.UserService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 描述:
@@ -47,5 +49,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateCredits(User user) {
         userMapper.updateCredits(user);
+    }
+
+    @Override
+    public List<Music> getMusicById(int id) {
+        return userMapper.getMusicById(id);
     }
 }

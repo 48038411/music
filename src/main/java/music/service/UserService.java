@@ -1,6 +1,9 @@
 package music.service;
 
+import music.entity.Music;
 import music.entity.User;
+
+import java.util.List;
 
 public interface UserService {
     /**
@@ -24,4 +27,6 @@ public interface UserService {
      * @param user
      */
     void updateCredits(User user);
+
+    List<Music> getMusicById(int id);
 }

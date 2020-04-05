@@ -1,6 +1,7 @@
 package music.mapper;
 
 
+import music.entity.Music;
 import music.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
@@ -43,11 +44,15 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    @Select("<script>" +
-            " INSERT INTO music VALUES" +
-            "        <foreach collection=\"musics\" item=\"item\" index=\"index\" separator=\",\">" +
-            "            (#{item.id},#{item.name},#{item.author},#{item.src},#{item.img},#{item.count},#{item.type},#{item.update_time})" +
-            "        </foreach>"+
-            "</script>")
-    List<User> getMusicById(int id);
+    @Select("SELECT u.id,\n" +
+            "               u.name,\n" +
+            "               m.id,\n" +
+            "               m.name,\n" +
+            "               m.author,\n" +
+            "               m.img\n" +
+            "        FROM t_user u\n" +
+            "                LEFT JOIN t_user_music um ON u.id = um.user_id\n" +
+            "                LEFT JOIN music m ON um.music_id= m.id\n" +
+            "        WHERE um.user_id=#{id}")
+    List<Music> getMusicById(int id);
 }
