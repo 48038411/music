@@ -1,6 +1,7 @@
 package music.mapper;
 
 import music.entity.Music;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -21,5 +22,11 @@ public interface MusicMapper {
      * @param musics
      * @return int
      */
+    @Insert("<script>" +
+            "INSERT INTO music VALUES" +
+            "<foreach collection=\"musics\" item=\"item\" index=\"index\" separator=\",\">" +
+            "(#{item.id},#{item.name},#{item.author},#{item.src},#{item.img},#{item.count},#{item.type},#{item.update_time})" +
+            "</foreach>" +
+            "</script>")
     int batchInsert(@Param("musics") List<Music> musics);
 }

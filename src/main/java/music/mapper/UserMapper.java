@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface UserMapper {
 
     /**
@@ -36,4 +38,16 @@ public interface UserMapper {
     @Update("UPDATE t_sys_user SET credits = #{credits} , last_login_time = #{lastLoginTime} WHERE id = ${id}")
     void updateCredits(User user);
 
+    /**
+     * 根据user的id查询音乐
+     * @param id
+     * @return
+     */
+    @Select("<script>" +
+            " INSERT INTO music VALUES" +
+            "        <foreach collection=\"musics\" item=\"item\" index=\"index\" separator=\",\">" +
+            "            (#{item.id},#{item.name},#{item.author},#{item.src},#{item.img},#{item.count},#{item.type},#{item.update_time})" +
+            "        </foreach>"+
+            "</script>")
+    List<User> getMusicById(int id);
 }
