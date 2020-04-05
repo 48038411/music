@@ -1,5 +1,7 @@
 package music.service;
 
+import music.entity.User;
+
 /**
  * @author jh_wu
  * @ClassName UserMusic
@@ -8,4 +10,5 @@ package music.service;
  * @Version 1.0
  **/
 public interface UserMusicService {
+
 }

@@ -2,26 +2,38 @@ package music.mapper;
 
 
 import music.entity.User;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 public interface UserMapper {
 
     /**
-     * 新增用户
+     * 用户登录
+     *
+     * @param name
+     * @return User
+     */
+    @Select("SELECT * FROM t_user WHERE name = #{name}  ")
+    User userLogin(String name);
+
+    /**
+     * 注册一个用户
+     *
      * @param user
      */
-    void addUser(User user);
+    @Insert(" INSERT INTO t_user (name, password, salt, email, phone_number, status, binding, credits, create_time, last_login_time)\n" +
+            "        VALUES (#{name},#{password},#{salt},#{email},#{phoneNumber},#{status},#{binding},#{credits},#{createTime},#{lastLoginTime})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    void userSign(User user);
 
     /**
-     * 根据用户名查询
-     * @param name
-     * @return
+     *更新积分和登录时间
+     *
+     * @param user
      */
-    User findByUserName(String name);
+    @Update("UPDATE t_sys_user SET credits = #{credits} , last_login_time = #{lastLoginTime} WHERE id = ${id}")
+    void updateCredits(User user);
 
-    /**
-     * 根据user的id查询音乐
-     * @param id
-     * @return
-     */
-    User getMusicById(int id);
 }
